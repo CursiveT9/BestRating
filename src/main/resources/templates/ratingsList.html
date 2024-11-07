@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ratings</title>
+</head>
+<body>
+<h1>Ratings</h1>
+<table>
+    <thead>
+    <tr>
+        <th>User</th>
+        <th>Points</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="rating : ${ratings}">
+        <td th:text="${rating.user}">User Name</td>
+        <td th:text="${rating.points}">Points</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

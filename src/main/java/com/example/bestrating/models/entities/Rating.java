@@ -1,35 +1,61 @@
 package com.example.bestrating.models.entities;
 
-import com.example.bestrating.models.baseEntities.TimestampedEntity;
-import jakarta.persistence.Entity;
+import com.example.bestrating.models.baseEntities.BaseEntity;
+import jakarta.persistence.*;
 
 @Entity
-public class Rating extends TimestampedEntity {
+@Table(name = "user_rating")
+public class Rating extends BaseEntity {
 
-    private String userId;
-    private int score;
+    @Column(name = "user_id", nullable = false)
+    private String userId; // ID пользователя, уникальный идентификатор
 
-    public Rating(String userId, int score) {
-        this.userId = userId;
-        this.score = score;
-    }
+    @Column(name = "points", nullable = false)
+    private int points; // Очки пользователя, используемые для рейтинга
+
+    @Transient // Поле не сохраняется в базе данных, можно вычислять по необходимости
+    private int rank; // Место в рейтинге (если требуется)
 
     public Rating() {
     }
 
+    public Rating(String userId, int points) {
+        this.userId = userId;
+        this.points = points;
+    }
+
+    // Getters и Setters
+
     public String getUserId() {
         return userId;
     }
-    public int getScore() {
-        return score;
-    }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
     public void setUserId(String userId) {
         this.userId = userId;
     }
 
+    public int getPoints() {
+        return points;
+    }
 
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
+    @Override
+    public String toString() {
+        return "UserRating{" +
+                "userId='" + userId + '\'' +
+                ", points=" + points +
+                ", rank=" + rank +
+                '}';
+    }
 }

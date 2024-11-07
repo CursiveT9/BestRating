@@ -22,9 +22,9 @@ public class RatingServiceImpl implements RatingService {
         if (rating == null) {
             rating = new Rating();
             rating.setUserId(userId);
-            rating.setScore(score);
+            rating.setPoints(score);
         } else {
-            rating.setScore(rating.getScore() + score);
+            rating.setPoints(rating.getPoints() + score);
         }
         ratingRepository.save(rating);
     }

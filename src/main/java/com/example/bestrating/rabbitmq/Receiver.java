@@ -30,7 +30,7 @@ public class Receiver {
     }
 
     private void updateUserRating(String userId, int score) {
-        ratingServiceImpl.testing();
+        ratingServiceImpl.updateRating(userId, score);
     }
 
     public CountDownLatch getLatch() {
