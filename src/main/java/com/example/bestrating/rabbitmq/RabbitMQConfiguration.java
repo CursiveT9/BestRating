@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration  // Добавляем эту аннотацию
 public class RabbitMQConfiguration {
     public static final String topicExchangeName = "spring-boot-exchange";
-    public static final String queueName = "spring-boot";
+    public static final String queueName = "rating-update";
 
     @Bean
     Queue queue() {

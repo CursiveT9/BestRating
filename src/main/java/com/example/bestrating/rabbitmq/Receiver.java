@@ -1,6 +1,7 @@
 package com.example.bestrating.rabbitmq;
 
 import com.example.bestrating.services.impl.RatingServiceImpl;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,7 @@ public class Receiver {
         this.ratingServiceImpl = ratingServiceImpl;
     }
 
+    @RabbitListener(queues = "rating-update", ackMode = "AUTO")
     public void receiveMessage(String message) {
         System.out.println("Received <" + message + ">");
         String[] parts = message.split(":");

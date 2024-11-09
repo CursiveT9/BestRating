@@ -24,12 +24,9 @@ public class RatingServiceImpl implements RatingService {
             rating.setUserId(userId);
             rating.setPoints(score);
         } else {
-            rating.setPoints(rating.getPoints() + score);
+            rating.setPoints(score);
         }
         ratingRepository.save(rating);
     }
 
-    public void testing() {
-        System.out.println("Testing");
-    }
 }
